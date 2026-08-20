@@ -1,0 +1,408 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Variables de colores y transiciones */
+:root {
+  --aboutgradiente1-color: #00415f;
+  --aboutgradiente2-color: #000c11;
+  --logo-color: #ffffff;
+  --accent-color: #3d3d3d;
+  --icon-light: #fcff3e;
+  --icon-dark: #2981bb;
+  --light-bg: #ffffff;
+  --light-header: #ffffffdc;
+  --light-text: #333;
+  --dark-bg: #121212;
+  --dark-header: #121212dc;
+  --dark-text: #f0f0f0;
+  --transition-speed: 0.5s;
+}
+
+/* Estilos globales */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--light-bg);
+  color: var(--light-text);
+  transition: background-color var(--transition-speed), color var(--transition-speed);
+  scroll-behavior: smooth;
+}
+
+body.dark {
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+/* Encabezado y navegación */
+header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  background: var(--light-header);
+}
+
+header.dark {
+  background-color: var(--dark-header);
+}
+
+nav {
+  margin-left: 20vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+}
+
+.logo{
+  margin-bottom: 1vh;
+}
+
+.logo a {
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--light-text);
+  transition: var(--transition-speed);
+}
+
+.logo a.dark {
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: var(--dark-text);
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Espaciado entre el logo y los enlaces */
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 15px; /* Espaciado entre los botones */
+}
+
+.nav-links li a {
+  text-decoration: none;
+  padding: 10px;
+  border: 2px solid transparent;
+  transition: all var(--transition-speed);
+  display: flex;
+  align-items: center;
+  height: 100%; /* Ocupa el 100% del alto del nav */
+  color: var(--light-text);
+}
+
+.nav-links li a.dark {
+  text-decoration: none;
+  padding: 10px;
+  border: 2px solid transparent;
+  transition: all var(--transition-speed);
+  display: flex;
+  align-items: center;
+  height: 100%; /* Ocupa el 100% del alto del nav */
+  color: var(--dark-text);
+}
+
+.nav-links li a:hover {
+  background-color: rgba(0, 132, 255, 0.466); /* Fondo rojo al hacer hover */
+  border-color: transparent; /* Mantener el borde transparente */
+  color: #fff; /* Asegurar que el texto siga siendo blanco */
+}
+
+/* Controles */
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Switch de modo oscuro */
+.switch-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Ícono del modo */
+.mode-icon {
+  font-size: 1.5rem;
+  color: var(--icon-light);
+  transition: color var(--transition-speed);
+}
+
+/* Si está en modo oscuro, cambiar color del ícono */
+body.dark .mode-icon {
+  color: var(--icon-dark);
+}
+
+/* Estilos para el switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: background-color var(--transition-speed);
+  border-radius: 26px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: transform var(--transition-speed);
+  border-radius: 50%;
+}
+
+/* Cuando el switch está activado */
+input:checked + .slider {
+  background-color: var(--accent-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Desplegable de idiomas */
+#langSelect {
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  cursor: pointer;
+}
+
+
+/* Sección Hero */
+.hero-video video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+}
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* Secciones generales */
+.section {
+  padding: 100px 20px;
+  text-align: center;
+  animation: slideIn 1s ease-out;
+}
+
+.section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.section-about {
+  width: 100%;
+  margin-top: 0vh;
+  padding: 5vh;
+  background: linear-gradient(135deg, var(--aboutgradiente1-color), var(--aboutgradiente2-color));
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.section-about h2 {
+  margin-bottom: 3vh;
+  color: white;
+  font-size: 4vh;
+}
+
+.section-about p {
+  color: white;
+  font-size: 2vh;
+}
+
+/* Proyectos */
+.projects-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* Estilo para las tarjetas de proyecto */
+.project-card {
+  display: block;
+  background-color: rgba(74, 144, 226, 0.1);
+  border: 1px solid var(--primary-color);
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px; /* Aumentar el ancho de la tarjeta */
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+  position: relative;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenedor del video */
+.project-video {
+  width: 100%;
+  height: 250px; /* Aumentar la altura del video */
+  overflow: hidden;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.project-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none; /* Evita que el usuario interactúe con el video */
+}
+
+/* Reproducir video al hacer hover */
+.project-card:hover video {
+  animation: none; /* Elimina cualquier animación previa */
+}
+
+/* Sección de Contacto */
+.contact-section {
+    background: linear-gradient(135deg, var(--aboutgradiente1-color), var(--aboutgradiente2-color));
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    width: 100%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 50px;
+}
+
+/* Ajuste de título y texto */
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.contact-section p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Enlace a redes sociales */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.2rem;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 15px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-link-redes i {
+    font-size: 2.5rem;
+}
+
+.social-link-redes i {
+    color: #000000;
+}
+
+.social-link-redes:hover {
+    transform: scale(1.1);
+    color: #ddd;
+}
+
+
+
+/* Botón de contacto */
+.contact-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all var(--transition-speed);
+    border: 2px solid white;
+}
+
+.contact-button:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: #fff;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive: en pantallas pequeñas se oculta la navegación principal */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  nav {
+    justify-content: space-between;
+  }
+}
